@@ -1,20 +1,33 @@
 import React from 'react';
 import Button from '../ui/Button';
+import UserInfo from '../UserInfo/UserInfo';
+import Courses from './Courses';
 import './UserAccount.css';
 
 const UserAccount = () => {
-  const handleLogout = () => {
-    console.log('Логин завершен');
+  const handleLogin = () => {
+    console.log('Login clicked');
+    // Логика для входа
+  };
+
+  const handleDataDownload = () => {
+    console.log('Завантажити дані clicked');
+    // Логика для загрузки данных
   };
 
   return (
     <div className="user-account">
-      <div className="user-info">
-        <h2>Олена Баговец</h2>
-        <p>22 роки</p>
-        <p>+3 80501112233</p>
-        <Button text="Выйти" onClick={handleLogout} />
+      {/* Информация о пользователе */}
+      <UserInfo />
+
+      {/* Кнопки */}
+      <div className="button-section">
+        <Button text="LOGIN" onClick={handleLogin} />
+        <Button text="ЗАВАНТАЖИТИ ДАНІ" onClick={handleDataDownload} />
       </div>
+
+      {/* Блок с курсами */}
+      <Courses />
     </div>
   );
 };

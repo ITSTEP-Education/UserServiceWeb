@@ -1,0 +1,195 @@
+.courses-section { 
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px;
+  background-color: #1E1E1E; /* Темный фон */
+  border-radius: 10px;
+  max-width: 1800px; /* Увеличиваем максимальную ширину секции */
+  margin: 0 auto;
+  margin-bottom: 150px; /* Увеличиваем отступ снизу */
+}
+
+/* Карточка с курсом */
+.course-card {
+  background-color: #eaf4fc; /* Светло-голубой фон */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(247, 244, 244, 0.1);
+  width: 35%; /* Делаем блок с фото уже */
+  height: 250px; /* Устанавливаем фиксированную высоту для всех карточек */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Размещаем элементы равномерно по вертикали */
+}
+
+/* Заголовок курса */
+.course-title {
+  background-color: #4e8cc9; /* Синий фон для заголовка */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 10px -20px; /* Поднимаем заголовок ближе к изображению */
+}
+
+/* Контейнер для изображения и информации о курсе */
+.course-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+/* Изображение курса */
+.course-content img.course-image {
+  width: 200px; /* Размер изображения */
+  height: 200px;
+  object-fit: cover;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+/* Список характеристик курса */
+.course-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.course-card ul li {
+  margin-bottom: 8px;
+  font-size: 18px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center; /* Выровнять текст по центру */
+}
+
+/* Синий фон с белым текстом для первой строки */
+.blue-background {
+  background-color: #4e8cc9; /* Синий фон */
+  color: white; /* Белый текст */
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Серый фон с белым текстом для второй строки */
+.gray-background {
+  background-color: #888; /* Серый фон */
+  color: white; /* Белый текст */
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Черный фон с белым текстом для третьей строки */
+.black-background {
+  background-color: #333; /* Черный фон */
+  color: white; /* Белый текст */
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Последняя строка с черной рамкой и черным текстом */
+.border-black {
+  border: 1px solid black; /* Черная рамка */
+  color: black; /* Черный текст */
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent; /* Убираем фон */
+  text-align: center;
+}
+
+/* Программа курса */
+.course-program {
+  background-color: #fff; /* Белый фон */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(243, 235, 235, 0.1);
+  width: 63%; /* Делаем блок с программой шире */
+  height: 250px; /* Устанавливаем фиксированную высоту для всех блоков */
+  overflow-y: auto; /* Добавляем скроллинг, если строк слишком много */
+  margin-bottom: 30px; /* Увеличиваем отступ снизу */
+}
+
+.course-program h3 {
+  background-color: #ff5722; /* Оранжевый фон для заголовка */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px 8px 0 0;
+  margin: -20px -20px 20px -20px;
+}
+
+/* Таблица программы курса */
+.course-program table {
+  width: 100%;
+  border-collapse: collapse; 
+}
+
+.course-program th, .course-program td {
+  border: 1px solid #ddd;
+  padding: 8px; /* Уменьшаем padding, чтобы вместить больше строк */
+  text-align: center;
+}
+
+.course-program th {
+  background-color: #162f63; /* Темно-синий фон для заголовков таблицы */
+  color: white;
+}
+
+.course-program td {
+  background-color: #eaf4fc; /* Светло-голубой фон для ячеек */
+  color: #333;
+}
+
+/* Чередование строк в таблице */
+.course-program tr:nth-child(even) {
+  background-color: #d1e8ff;
+}
+
+/* Строки с красным текстом */
+.course-program td:nth-child(2),
+.course-program td:nth-child(5) {
+  background-color: #4b749c;
+  color: #bf0d00; /* Красный текст для определенных колонок */
+}
+
+/* Стиль для номера по порядку */
+.course-program td:nth-child(1) {
+  background-color: #4b749c;
+  color: #bf0d00; /* Цвет для номера по порядку */
+}
+
+/* Обновляем стили для других столбцов */
+.course-program td:nth-child(2),
+.course-program td:nth-child(3),
+.course-program td:nth-child(4),
+.course-program td:nth-child(5) {
+  background-color: #4b749c;
+  color: #bf0d00; /* Цвет для определенных колонок */
+}
+
+/* Секция для выбора курса */
+.course-selection h3 {
+  color: white; /* Делаем заголовок белым */
+}
+
+.course-selection ul {
+  list-style-type: none;
+  padding: 0;
+  color: white; /* Делаем текст выбора белым */
+}
+
+.course-selection ul li {
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.course-selection ul li:hover {
+  background-color: #4e8cc9;
+}

@@ -1,18 +1,29 @@
+.button-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирование кнопок */
+  gap: 10px; /* Пространство между кнопками */
+  margin-top: 20px; /* Отступ сверху */
+}
+
 .custom-button {
-    background-color: #6200EE;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .custom-button:hover {
-    background-color: #3700B3;
-  }
-  
-  .custom-button:active {
-    background-color: #290093;
-  }
+  background-color: #6200EE;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  width: 100%; /* Делаем кнопки на всю ширину родителя */
+  max-width: 300px; /* Ограничиваем ширину кнопок */
+  text-align: center; /* Центрирование текста внутри кнопки */
+}
+
+.custom-button:hover {
+  background-color: #3700B3;
+}
+
+.custom-button:active {
+  background-color: #290093;
+}

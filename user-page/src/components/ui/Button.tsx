@@ -1,15 +1,14 @@
 import React from 'react';
-import './Button.css';
 
 interface ButtonProps {
   text: string;
   onClick: () => void;
-  type?: 'button' | 'submit' | 'reset';
+  className?: string; // Добавляем className как опциональное свойство
 }
 
-const Button: React.FC<ButtonProps> = ({ text, onClick, type = 'button' }) => {
+const Button: React.FC<ButtonProps> = ({ text, onClick, className }) => {
   return (
-    <button className="custom-button" onClick={onClick} type={type}>
+    <button className={className} onClick={onClick}>
       {text}
     </button>
   );

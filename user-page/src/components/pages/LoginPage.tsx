@@ -1,11 +1,10 @@
 import React from 'react';
-import LoginForm from '../../components/LoginForm';
 
 const LoginPage = () => {
   return (
     <div>
-      <h1>Вход</h1>
-      <LoginForm />
+      <h2>Login Page</h2>
+      {/* Добавьте форму логина здесь */}
     </div>
   );
 };
