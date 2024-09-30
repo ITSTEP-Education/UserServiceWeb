@@ -1,11 +1,14 @@
-import { Container, ListGroup } from "react-bootstrap";
+import { Container, ListGroup, Navbar } from "react-bootstrap";
 import styled from "styled-components";
 
-export const StyledFooterContainer = styled(Container)`
+export const StyledFooterContainer = styled(Navbar)`
   background: #757575;
   padding: 2em;
   height: auto;
   width: 100%;
+  display:block;
+  flex-wrap:wrap;
+  align-items: center;
 `;
 
 export const Contacts = styled(Container)`
@@ -41,19 +44,25 @@ export const ContactsInfo = styled(ListGroup)`
     gap: 0.7em;
   }
 `;
+
+export const ListGroupItems = styled(ListGroup.Item)`
+background-color: transparent; 
+ border: none;
+`;
+
 export const SocialLinks = styled(ListGroup)`
   display: inline-block;
 `;
 
-export const Links = styled(ListGroup.Item)`
+export const Links = styled(ListGroupItems)`
   display: inline;
   padding: 3em;
 `;
 
-export const Numbers = styled(ListGroup.Item)`
+export const Numbers = styled(ListGroupItems)`
   display: inline;
 `;
-export const Number = styled(ListGroup.Item)`
+export const Number = styled(ListGroupItems)`
   display: flex;
 `;
 
@@ -61,4 +70,5 @@ export const CopyrightSection = styled(Container)`
   text-align: center;
   color: #e6e6e6;
   font-size: 1.1em;
+  display:block !important;
 `;
