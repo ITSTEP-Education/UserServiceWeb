@@ -47,3 +47,9 @@
     margin: 5px 0;
     font-size: 18px;
 }
+
+.highlight {
+    text-decoration: underline; /* Подчеркивание */
+    font-weight: bold; /* Жирный шрифт */
+    color: #6200ee; /* Цвет текста */
+  }

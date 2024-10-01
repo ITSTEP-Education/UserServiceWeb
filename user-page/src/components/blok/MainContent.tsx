@@ -1,5 +1,6 @@
-import React from 'react';
-import './MainContent.css'; // Подключаем стили
+import React, { useState } from 'react';
+import { fetchUserData } from '../../services/api'; // Импортируем функцию из api.ts
+import './MainContent.css';
 import googlePlay from '../assets/google_play.png';
 import appStore from '../assets/app_store.png';
 import image1 from '../assets/Image 1.png';
@@ -9,9 +10,29 @@ import UserInfo from '../UserInfo/UserInfo';
 import Courses from '../UserAccount/Courses';
 import Button from '../ui/Button';
 
-const MainContent = () => {
-  const handleDataDownload = () => {
-    console.log('ЗАВАНТАЖИТИ ДАНІ clicked');
+const MainContent: React.FC = () => {
+  const [firstName, setFirstName] = useState('Олена');
+  const [lastName, setLastName] = useState('Баговець');
+  const [age, setAge] = useState(22);
+  const [mobile, setMobile] = useState('+3 80501112233');
+  const [error, setError] = useState<string | null>(null);
+
+  // Функция для обработки запроса на сервер
+  const handleDataDownload = async () => {
+    try {
+      // Вызов функции API для загрузки данных пользователя
+      const data = await fetchUserData('testuser'); // Укажите username или другой параметр
+
+      // Устанавливаем загруженные данные в состояние
+      setFirstName(data.firstName);
+      setLastName(data.lastName);
+      setAge(data.age);
+      setMobile(data.mobile);
+      console.log('Загруженные данные:', data);
+    } catch (error) {
+      setError('Ошибка загрузки данных');
+      console.error('Ошибка:', error);
+    }
   };
 
   return (
@@ -36,12 +57,42 @@ const MainContent = () => {
           {/* Иконки магазинов */}
           <img src={googlePlay} alt="Google Play" className="store-icon" />
           <img src={appStore} alt="App Store" className="store-icon" />
-          <Button text="ЗАВАНТАЖИТИ ДАНІ" className="custom-button" onClick={handleDataDownload} />
         </div>
       </div>
 
+      {/* Поля для имени и фамилии с кнопкой */}
+      <div className="input-container">
+        <input
+          type="text"
+          placeholder="Ім'я"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="input-field"
+        />
+        <input
+          type="text"
+          placeholder="Прізвище"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="input-field"
+        />
+        <Button
+          text="ЗАВАНТАЖИТИ ДАНІ"
+          className="custom-button"
+          onClick={handleDataDownload}
+        />
+      </div>
+
       {/* Блок информации о пользователе */}
-      <UserInfo />
+      <UserInfo
+        firstName={firstName}
+        lastName={lastName}
+        age={age}
+        mobile={mobile}
+      />
+
+      {/* Отображение сообщения об ошибке */}
+      {error && <p className="error-message">{error}</p>}
 
       {/* Блок с курсами */}
       <Courses />

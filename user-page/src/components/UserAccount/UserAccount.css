@@ -14,7 +14,7 @@
 }
 
 .custom-button {
-  background-color: #6200EE;
+  background-color: #0F900C; /* Основной цвет кнопки */
   color: white;
   padding: 10px 20px;
   border: none;
@@ -28,9 +28,23 @@
 }
 
 .custom-button:hover {
-  background-color: #3700B3;
+  background-color: #0F900C; /* Цвет при наведении */
 }
 
 .custom-button:active {
-  background-color: #290093;
+  background-color: #0F900C; /* Цвет при нажатии */
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.input-field {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
 }

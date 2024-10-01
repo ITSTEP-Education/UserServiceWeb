@@ -1,89 +1,107 @@
 import React, { useState } from 'react';
 import './Courses.css';
-import cplusplus from '../assets/cplusplus.png';
-import javascript from '../assets/javascript.png';
-import python from '../assets/python.png';
-import typescript from '../assets/typescript.png';
-import csharp from '../assets/csharp.png';
+import cppImage from '../assets/c++.png';
+import jsImage from '../assets/js.png';
+import pythonImage from '../assets/python.png';
+import tsImage from '../assets/ts.png';
+import csharpImage from '../assets/c#.png';
 
-interface Course {
+// Сопоставление названий с путями к изображениям
+const imageMap: { [key: string]: string } = {
+  'c++': cppImage,
+  'js': jsImage,
+  'python': pythonImage,
+  'ts': tsImage,
+  'c#': csharpImage
+};
+
+interface ICourse {
   id: number;
   name: string;
-  duration: string;
-  price: string;
-  type?: string; // Добавляем тип как необязательное поле
-  image: string;
-  program: { id: number; name: string; hours: number; presence: string; instructor: string }[];
+  typeEngeeniring?: string;  // Тип инженерии (например, back-end, front-end)
+  timeStudy: string;  // Продолжительность курса
+  sumPay: string;  // Стоимость курса
+  image: string;  // Название изображения из базы данных (например, 'c++', 'js', 'python', 'ts', 'c#')
+  program: Program[];  // Программа курса
 }
 
-const coursesData: Course[] = [
+interface Program {
+  id: number;
+  studySection: string;  // Название раздела курса
+  studyDuration: string;  // Продолжительность обучения
+  isRemote: boolean;  // Дистанционный или очный курс
+  teacher: string;  // Преподаватель
+}
+
+// Пример данных курсов с названиями изображений из БД
+const coursesData: ICourse[] = [
   {
     id: 1,
     name: 'C++',
-    duration: '6 міс',
-    price: '300 грн. / міс.',
-    type: 'back-end', // Новое поле
-    image: cplusplus, // Исправляем путь к изображению
+    timeStudy: '6 міс',
+    sumPay: '300 грн. / міс.',
+    typeEngeeniring: 'back-end',
+    image: 'c++',  // Название изображения в базе данных
     program: [
-      { id: 1, name: 'base', hours: 100, presence: 'online', instructor: 'Kisli Yuriy' },
-      { id: 2, name: 'middle', hours: 150, presence: 'offline', instructor: 'Kisli Yuriy' },
-      { id: 3, name: 'advance', hours: 75, presence: 'online', instructor: 'Fateev Ruslan' }
+      { id: 1, studySection: 'base', studyDuration: '100 год', isRemote: true, teacher: 'Kisli Yuriy' },
+      { id: 2, studySection: 'middle', studyDuration: '150 год', isRemote: false, teacher: 'Kisli Yuriy' },
+      { id: 3, studySection: 'advance', studyDuration: '75 год', isRemote: true, teacher: 'Fateev Ruslan' }
     ]
   },
   {
     id: 2,
-    name: 'Javascript',
-    duration: '5 міс',
-    price: '400 грн. / міс.',
-    type: 'front-end',
-    image: javascript,
+    name: 'JavaScript',
+    timeStudy: '5 міс',
+    sumPay: '400 грн. / міс.',
+    typeEngeeniring: 'front-end',
+    image: 'js',  // Название изображения в базе данных
     program: [
-      { id: 1, name: 'basic Javascript', hours: 100, presence: 'offline', instructor: 'Ivanov Ivan' },
-      { id: 2, name: 'advanced Javascript', hours: 200, presence: 'online', instructor: 'Petrov Petr' }
+      { id: 1, studySection: 'basic Javascript', studyDuration: '100 год', isRemote: false, teacher: 'Ivanov Ivan' },
+      { id: 2, studySection: 'advanced Javascript', studyDuration: '200 год', isRemote: true, teacher: 'Petrov Petr' }
     ]
   },
   {
     id: 3,
     name: 'Python',
-    duration: '4 міс',
-    price: '350 грн. / міс.',
-    type: 'back-end',
-    image: python,
+    timeStudy: '4 міс',
+    sumPay: '350 грн. / міс.',
+    typeEngeeniring: 'back-end',
+    image: 'python',  // Название изображения в базе данных
     program: [
-      { id: 1, name: 'Intro to Python', hours: 100, presence: 'online', instructor: 'Sergeev Alex' },
-      { id: 2, name: 'Advanced Python', hours: 150, presence: 'offline', instructor: 'Andreev Pavel' }
+      { id: 1, studySection: 'Intro to Python', studyDuration: '100 год', isRemote: true, teacher: 'Sergeev Alex' },
+      { id: 2, studySection: 'Advanced Python', studyDuration: '150 год', isRemote: false, teacher: 'Andreev Pavel' }
     ]
   },
   {
     id: 4,
     name: 'TypeScript',
-    duration: '4 міс',
-    price: '350 грн. / міс.',
-    type: 'front-end',
-    image: typescript,
+    timeStudy: '4 міс',
+    sumPay: '350 грн. / міс.',
+    typeEngeeniring: 'front-end',
+    image: 'ts',  // Название изображения в базе данных
     program: [
-      { id: 1, name: 'base TS', hours: 100, presence: 'online', instructor: 'Tkachuk Oleh' },
-      { id: 2, name: 'middle TS', hours: 150, presence: 'offline', instructor: 'Tkachuk Oleh' }
+      { id: 1, studySection: 'base TS', studyDuration: '100 год', isRemote: true, teacher: 'Tkachuk Oleh' },
+      { id: 2, studySection: 'middle TS', studyDuration: '150 год', isRemote: false, teacher: 'Tkachuk Oleh' }
     ]
   },
   {
     id: 5,
     name: 'C#',
-    duration: '6 міс',
-    price: '400 грн. / міс.',
-    type: 'back-end',
-    image: csharp,
+    timeStudy: '6 міс',
+    sumPay: '400 грн. / міс.',
+    typeEngeeniring: 'back-end',
+    image: 'c#',  // Название изображения в базе данных
     program: [
-      { id: 1, name: 'base C#', hours: 100, presence: 'online', instructor: 'Yakovlev Sergey' },
-      { id: 2, name: 'middle C#', hours: 150, presence: 'offline', instructor: 'Smirnov Pavel' }
+      { id: 1, studySection: 'base C#', studyDuration: '100 год', isRemote: true, teacher: 'Yakovlev Sergey' },
+      { id: 2, studySection: 'middle C#', studyDuration: '150 год', isRemote: false, teacher: 'Smirnov Pavel' }
     ]
   }
 ];
 
 const Courses: React.FC = () => {
-  const [selectedCourse, setSelectedCourse] = useState<Course>(coursesData[0]);
+  const [selectedCourse, setSelectedCourse] = useState<ICourse>(coursesData[0]);
 
-  const handleCourseChange = (course: Course) => {
+  const handleCourseChange = (course: ICourse) => {
     setSelectedCourse(course);
   };
 
@@ -103,17 +121,17 @@ const Courses: React.FC = () => {
 
       {/* Секция с информацией о курсе */}
       <div className="course-card">
-  <h3 className="course-title">КУРС ПРОГРАМУВАННЯ</h3>
-  <div className="course-content">
-    <img src={selectedCourse.image} alt={selectedCourse.name} className="course-image" />
-    <ul>
-      <li className="course-item blue-background">{selectedCourse.name}</li>
-      <li className="course-item gray-background">{selectedCourse.type || "back-end / front-end"}</li>
-      <li className="course-item black-background">{selectedCourse.duration}</li>
-      <li className="course-item border-black">{selectedCourse.price}</li>
-    </ul>
-  </div>
-</div>
+        <h3 className="course-title">КУРС ПРОГРАМУВАННЯ</h3>
+        <div className="course-content">
+          <img src={imageMap[selectedCourse.image]} alt={selectedCourse.name} className="course-image" />
+          <ul>
+            <li className="course-item blue-background">{selectedCourse.name}</li>
+            <li className="course-item gray-background">{selectedCourse.typeEngeeniring || "back-end / front-end"}</li>
+            <li className="course-item black-background">{selectedCourse.timeStudy}</li>
+            <li className="course-item border-black">{selectedCourse.sumPay}</li>
+          </ul>
+        </div>
+      </div>
 
       {/* Программа курса */}
       <div className="course-program">
@@ -122,9 +140,9 @@ const Courses: React.FC = () => {
           <thead>
             <tr>
               <th>№</th>
-              <th>Назва</th>
-              <th>Кількість, год</th>
-              <th>Присутність</th>
+              <th>Розділ навчання</th>
+              <th>Тривалість</th>
+              <th>Дистанційно</th>
               <th>Викладач</th>
             </tr>
           </thead>
@@ -132,10 +150,10 @@ const Courses: React.FC = () => {
             {selectedCourse.program.map((program) => (
               <tr key={program.id}>
                 <td>{program.id}</td>
-                <td>{program.name}</td>
-                <td>{program.hours}</td>
-                <td>{program.presence}</td>
-                <td>{program.instructor}</td>
+                <td>{program.studySection}</td>
+                <td>{program.studyDuration}</td>
+                <td>{program.isRemote ? 'Так' : 'Ні'}</td>
+                <td>{program.teacher}</td>
               </tr>
             ))}
           </tbody>
