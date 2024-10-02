@@ -1,0 +1,55 @@
+/* Блок информации о пользователе */
+.user-info {
+    background-color: #312824;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Выровняем содержимое влево */
+    gap: 20px;
+    max-width: 1460px; /* Ограничиваем ширину блока */
+    margin: 0 auto; /* Центрируем блок по ширине страницы */
+    padding: 20px;
+}
+
+/* Аватар пользователя */
+.user-avatar {
+    width: 200px; /* Размер аватара */
+    height: 200px; /* Высота аватара */
+    border-radius: 50%;
+    border: 3px solid #fff; /* Белая рамка вокруг фото */
+    margin-left: 20px; /* Отступ слева */
+}
+
+/* Блок с текстом */
+.user-details {
+    color: #000; /* Черный текст на белом фоне */
+    background-color: #fff; /* Белый фон для текста */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center; /* Центрируем текст внутри блока */
+    flex-grow: 1; /* Позволяем блоку занимать оставшееся пространство */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Центрирование текста по горизонтали */
+    width: 400px; /* Устанавливаем фиксированную ширину для блока */
+    margin-right: auto; /* Добавляем автоматический отступ справа для выравнивания */
+}
+
+/* Заголовок с именем */
+.user-details h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Остальные детали */
+.user-details p {
+    margin: 5px 0;
+    font-size: 18px;
+}
+
+.highlight {
+    text-decoration: underline; /* Подчеркивание */
+    font-weight: bold; /* Жирный шрифт */
+    color: #6200ee; /* Цвет текста */
+  }

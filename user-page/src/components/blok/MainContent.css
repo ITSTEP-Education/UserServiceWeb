@@ -1,0 +1,97 @@
+.main-content { 
+  background-color: #1E1E1E;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 1460px;    
+  margin: 0 auto;
+}
+
+/* Заголовок и контейнер для изображений */
+.main-content-header {
+  display: flex;
+  align-items: flex-start; /* Выравниваем по верхнему краю */
+  margin-bottom: 0; /* Убираем лишний отступ снизу */
+  margin-top: -40px; /* Поднимаем весь блок выше */
+}
+   
+/* Заголовок текста */
+.main-content-header h1 {
+  font-size: 38px;
+  line-height: 1.5;
+  text-align: left;
+  margin-bottom: 0;
+  color: rgb(250, 245, 245);
+  max-width: 260%;
+  margin-right: 0; /* Убираем лишний отступ между текстом и картинками */
+  margin-top: 50px; /* Поднимаем текст на одном уровне с верхом первой картинки */
+}
+
+/* Контейнер с изображениями */
+.main-content-images {
+  position: relative;
+  display: flex;
+  justify-content: flex-end; /* Картинки справа от текста */
+  margin-left: 10px; /* Отступ для картинок от текста */
+  margin-right: -180px; /* Увеличиваем отступ для создания большего пространства справа */
+}
+
+/* Первая картинка (вертикальная) */
+.main-content-image:first-child {
+  position: relative;
+  width: 580px; /* Размер первой картинки */
+  z-index: 2;
+  margin-right: -440px; /* Перекрытие второй картинки */
+  margin-bottom: 20px; /* Поднятие первой картинки над второй */
+  top: -90px; /* Поднимаем первую картинку ещё выше */
+  right: -150px; /* Сдвигаем первую картинку правее */
+}
+
+/* Вторая картинка (горизонтальная) */
+.main-content-image:last-child {
+  position: relative;
+  width: 820px; /* Размер второй картинки */
+  z-index: 1;
+  margin-left: 0;
+  top: -20px; /* Поднимаем вторую картинку */
+  right: -170px; /* Сдвигаем вторую картинку правее */
+}
+/* Иконки магазинов */
+.store-icon {
+  width: 150px; /* Увеличиваем размер иконок */
+  margin-left: 20px; /* Иконки ближе к блоку логина */
+  background-color: transparent; /* Убираем белый фон */
+  padding: 0; /* Убираем лишний padding */
+  border-radius: 0; /* Убираем скругления */
+  transition: transform 0.3s ease;
+}
+
+.store-icon:hover {
+  transform: scale(1.05); /* Увеличение при наведении */
+}
+
+/* Секция с иконками магазинов */
+.playstore-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Отступ между иконками */
+  margin-top: 10px; /* Поднимаем иконки выше */
+}
+
+/* Секция логина и кнопок */
+.login-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Логин форма и иконки рядом */
+  align-items: flex-start;
+  margin-top: -30px; /* Поднимаем секцию логина выше */
+  margin-bottom: 30px; /* Добавление отступа снизу для лучшей структуры */
+}
+
+/* Кнопка */
+.button-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
