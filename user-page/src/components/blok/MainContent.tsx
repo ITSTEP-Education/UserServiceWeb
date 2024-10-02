@@ -11,23 +11,22 @@ import Courses from '../UserAccount/Courses';
 import Button from '../ui/Button';
 
 const MainContent: React.FC = () => {
-  const [firstName, setFirstName] = useState('Олена');
-  const [lastName, setLastName] = useState('Баговець');
-  const [age, setAge] = useState(22);
-  const [mobile, setMobile] = useState('+3 80501112233');
+  const [firstName, setFirstName] = useState(' ');
+  const [lastName, setLastName] = useState(' ');
+  const [age, setAge] = useState(0);
+  const [mobile, setMobile] = useState('+38  ');
   const [error, setError] = useState<string | null>(null);
 
   // Функция для обработки запроса на сервер
   const handleDataDownload = async () => {
     try {
       // Вызов функции API для загрузки данных пользователя
-      const data = await fetchUserData('testuser'); // Укажите username или другой параметр
+      const data = await fetchUserData('alla-pavlova'); // Укажите username или другой параметр
 
       // Устанавливаем загруженные данные в состояние
-      setFirstName(data.firstName);
-      setLastName(data.lastName);
+      setFirstName(data.userName);     
       setAge(data.age);
-      setMobile(data.mobile);
+      setMobile(data.phone);
       console.log('Загруженные данные:', data);
     } catch (error) {
       setError('Ошибка загрузки данных');
@@ -72,7 +71,6 @@ const MainContent: React.FC = () => {
         <input
           type="text"
           placeholder="Прізвище"
-          value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           className="input-field"
         />
@@ -86,7 +84,6 @@ const MainContent: React.FC = () => {
       {/* Блок информации о пользователе */}
       <UserInfo
         firstName={firstName}
-        lastName={lastName}
         age={age}
         mobile={mobile}
       />

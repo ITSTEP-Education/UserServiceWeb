@@ -5,7 +5,6 @@ import Courses from './Courses';
 import './UserAccount.css';
 
 const UserAccount = () => {
-  // Добавляем состояния для имени, фамилии, возраста и телефона
   const [firstName, setFirstName] = useState('Олена');
   const [lastName, setLastName] = useState('Баговець');
   const [age, setAge] = useState(22);
@@ -17,7 +16,6 @@ const UserAccount = () => {
 
   const handleDataDownload = () => {
     console.log('ЗАВАНТАЖИТИ ДАНІ clicked');
-    // Логика для загрузки данных
   };
 
   return (
@@ -41,8 +39,8 @@ const UserAccount = () => {
         <Button text="ЗАВАНТАЖИТИ ДАНІ" className="custom-button" onClick={handleDataDownload} />
       </div>
 
-      {/* Информация о пользователе */}
-      <UserInfo firstName={firstName} lastName={lastName} age={age} mobile={mobile} />
+      {/* Информация о пользователе с подчеркнутым именем */}
+      <UserInfo firstName={firstName} age={age} mobile={mobile} />
 
       {/* Кнопки */}
       <div className="button-section">
