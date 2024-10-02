@@ -108,7 +108,7 @@ const Courses: React.FC = () => {
   return (
     <div className="courses-section">
       {/* Секция для выбора курса */}
-      <div className="course-selection">
+      {/* <div className="course-selection">
         <h3>Выберите курс:</h3>
         <ul>
           {coursesData.map((course) => (
@@ -117,7 +117,7 @@ const Courses: React.FC = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
 
       {/* Секция с информацией о курсе */}
       <div className="course-card">

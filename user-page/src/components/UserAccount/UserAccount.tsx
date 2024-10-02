@@ -40,7 +40,7 @@ const UserAccount = () => {
       </div>
 
       {/* Информация о пользователе с подчеркнутым именем */}
-      <UserInfo firstName={firstName} age={age} mobile={mobile} />
+      <UserInfo userName={`${firstName}-${lastName}`} age={age} mobile={mobile} />
 
       {/* Кнопки */}
       <div className="button-section">
