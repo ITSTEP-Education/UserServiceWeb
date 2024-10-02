@@ -1,0 +1,19 @@
+.download-section {
+    margin-top: 20px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .download-section h3 {
+    margin-bottom: 10px;
+  }
+  
+  .download-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .download-section ul li {
+    margin-bottom: 10px;
+  }
