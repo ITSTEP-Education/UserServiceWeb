@@ -10,6 +10,8 @@ import UserInfo from '../UserInfo/UserInfo';
 import Courses from '../UserAccount/Courses';
 import Button from '../ui/Button';
 import { Input } from '../ui/Input.styled';
+import { CourseProgram } from '../CourseProgram';
+import { Display } from '../styles/General.styled';
 
 const MainContent: React.FC = () => {
   const [firstName, setFirstName] = useState(' ');
@@ -18,17 +20,19 @@ const MainContent: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [age, setAge] = useState(0);
   const [mobile, setMobile] = useState('+38  ');
-  const [productName, setProductName] = useState('');
+  const [productName, setProductName] = useState<string>('');
   const [typeEngeeniring, setTypeEngeeniring] = useState('');
   const [mounthPay, setMounthPay] = useState(0);
   const [mounthQty, setMounthQty] = useState(0.0);
 
   const [error, setError] = useState<string | null>(null);
+  const [isCourse, setIsCourse] = useState<boolean>(false);
 
   // Функция для обработки запроса на сервер
   const handleDataDownload = async () => {
     try {
       // Вызов функции API для загрузки данных пользователя
+      setIsCourse(false);
       const data = await fetchUserData(`${firstName}-${lastName}`); // Укажите username или другой параметр
 
       // Устанавливаем загруженные данные в состояние
@@ -39,9 +43,11 @@ const MainContent: React.FC = () => {
       setTypeEngeeniring(data.typeEngeeniring);
       setMounthPay(data.mounthPay);
       setMounthQty(data.mounthQty);
+      setIsCourse(true);
       // console.log('Загруженные данные:', data);
     } catch (error) {
       setError('Ошибка загрузки данных');
+      setIsCourse(false);
       // console.error('Ошибка:', error);
     }
   };
@@ -91,17 +97,12 @@ const MainContent: React.FC = () => {
       </div>
 
       {/* Блок информации о пользователе */}
-      <UserInfo
-        userName={userName}
-        age={age}
-        mobile={mobile}
-      />
-
-      {/* Отображение сообщения об ошибке */}
-      {error && <p className="error-message">{error}</p>}
+      {isCourse? <UserInfo userName={userName} age={age} mobile={mobile}/> : <p className="error-message" style={{color: 'red'}}>{error}</p>};
+   
 
       {/* Блок с курсами */}
-      <Courses name={productName} typeEngeeniring={typeEngeeniring} mounthQty={mounthQty} mounthPay={mounthPay}/>
+      {isCourse? <Courses name={productName} typeEngeeniring={typeEngeeniring} mounthQty={mounthQty} mounthPay={mounthPay}/>: <></>};
+      {isCourse? <CourseProgram productName={productName}/> : <></>};
     </div>
   );
 };
