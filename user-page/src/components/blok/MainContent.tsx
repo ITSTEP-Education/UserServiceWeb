@@ -9,6 +9,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import UserInfo from '../UserInfo/UserInfo';
 import Courses from '../UserAccount/Courses';
 import Button from '../ui/Button';
+import { Input } from '../ui/Input.styled';
 
 const MainContent: React.FC = () => {
   const [firstName, setFirstName] = useState(' ');
@@ -17,6 +18,11 @@ const MainContent: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [age, setAge] = useState(0);
   const [mobile, setMobile] = useState('+38  ');
+  const [productName, setProductName] = useState('');
+  const [typeEngeeniring, setTypeEngeeniring] = useState('');
+  const [mounthPay, setMounthPay] = useState(0);
+  const [mounthQty, setMounthQty] = useState(0.0);
+
   const [error, setError] = useState<string | null>(null);
 
   // Функция для обработки запроса на сервер
@@ -29,10 +35,14 @@ const MainContent: React.FC = () => {
       setUserName(data.userName);     
       setAge(data.age);
       setMobile(data.phone);
-      console.log('Загруженные данные:', data);
+      setProductName(data.productName);
+      setTypeEngeeniring(data.typeEngeeniring);
+      setMounthPay(data.mounthPay);
+      setMounthQty(data.mounthQty);
+      // console.log('Загруженные данные:', data);
     } catch (error) {
       setError('Ошибка загрузки данных');
-      console.error('Ошибка:', error);
+      // console.error('Ошибка:', error);
     }
   };
 
@@ -63,18 +73,15 @@ const MainContent: React.FC = () => {
 
       {/* Поля для имени и фамилии с кнопкой */}
       <div className="input-container">
-        <input
+        <Input
           type="text"
           placeholder="Ім'я"
-          // value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          className="input-field"
         />
-        <input
+        <Input
           type="text"
           placeholder="Прізвище"
           onChange={(e) => setLastName(e.target.value)}
-          className="input-field"
         />
         <Button
           text="ЗАВАНТАЖИТИ ДАНІ"
@@ -94,7 +101,7 @@ const MainContent: React.FC = () => {
       {error && <p className="error-message">{error}</p>}
 
       {/* Блок с курсами */}
-      <Courses />
+      <Courses name={productName} typeEngeeniring={typeEngeeniring} mounthQty={mounthQty} mounthPay={mounthPay}/>
     </div>
   );
 };
