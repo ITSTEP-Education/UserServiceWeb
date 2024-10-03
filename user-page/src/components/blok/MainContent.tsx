@@ -99,10 +99,13 @@ const MainContent: React.FC = () => {
       {/* Блок информации о пользователе */}
       {isCourse? <UserInfo userName={userName} age={age} mobile={mobile}/> : <p className="error-message" style={{color: 'red'}}>{error}</p>};
    
-
       {/* Блок с курсами */}
-      {isCourse? <Courses name={productName} typeEngeeniring={typeEngeeniring} mounthQty={mounthQty} mounthPay={mounthPay}/>: <></>};
-      {isCourse? <CourseProgram productName={productName}/> : <></>};
+      <div style={{position: 'relative', left: '100px', width: '900px'}}>
+        {isCourse? <Courses name={productName} typeEngeeniring={typeEngeeniring} mounthQty={mounthQty} mounthPay={mounthPay}/>: <></>};
+      </div>
+      <div style={{position: 'relative', top: '-480px', left: '580px', maxWidth: '1000px'}}>
+        {isCourse? <CourseProgram name={productName}/> : <></>};
+      </div>
     </div>
   );
 };
